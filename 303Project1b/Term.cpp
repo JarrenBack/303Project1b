@@ -10,11 +10,30 @@ bool Term::operator < (Term rhs)
 {
 	if (exponent < rhs.exponent)
 		return true;
-	else if (coefficient < rhs.coefficient)
+	if (exponent == rhs.exponent && coefficient < rhs.coefficient)
 		return true;
 
 	return false;
 
+}
+
+bool Term::operator > (Term rhs)
+{
+	if (exponent > rhs.exponent)
+		return true;
+	if (exponent == rhs.exponent && coefficient > rhs.coefficient)
+		return true;
+
+	return false;
+
+}
+
+bool Term::operator == (Term rhs)
+{
+
+	if (!(*this < rhs) && !(*this > rhs))
+		return true;
+	else return false;
 }
 
 void Term::setExponent(const int exp)
